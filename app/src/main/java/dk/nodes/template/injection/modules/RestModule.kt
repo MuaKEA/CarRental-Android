@@ -7,7 +7,6 @@ import dagger.Provides
 import dk.nodes.nstack.kotlin.providers.NMetaInterceptor
 import dk.nodes.template.BuildConfig
 import dk.nodes.template.network.Api
-import dk.nodes.template.network.MovieService
 import dk.nodes.template.network.util.BufferedSourceConverterFactory
 import dk.nodes.template.network.util.DateDeserializer
 import dk.nodes.template.network.util.ItemTypeAdapterFactory
@@ -48,6 +47,13 @@ class RestModule {
     fun provideBaseUrlString(): String {
         return "https://api.themoviedb.org/3/"
     }
+    @Provides
+    @Named("NAME_Weather_BASE_URL")
+    fun provideWeatherBaseUrlString(): String {
+        return "https://api.openweathermap.org"
+    }
+
+
 
     @Provides
     @Singleton
@@ -56,7 +62,6 @@ class RestModule {
     }
 
     @Provides
-    @Singleton
     fun provideHttpClient(): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
             .connectTimeout(45, TimeUnit.SECONDS)
@@ -74,7 +79,6 @@ class RestModule {
     }
 
     @Provides
-    @Singleton
     fun provideRetrofit(
         client: OkHttpClient,
         converter: Converter.Factory,
@@ -90,15 +94,39 @@ class RestModule {
     }
 
     @Provides
+    @RetrofitApi
+    @Singleton
+    fun provideRetrofit2(
+            client: OkHttpClient,
+            converter: Converter.Factory,
+            @Named("NAME_Weather_BASE_URL") baseUrl: String
+    ): Retrofit {
+        return Retrofit.Builder()
+                .client(client)
+                .baseUrl(baseUrl)
+                .addConverterFactory(BufferedSourceConverterFactory())
+                .addConverterFactory(converter)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+    }
+
+
+//    @Provides
+//    fun provideWeatherService(@RetrofitApi r: Retrofit): WeatherService {
+//        return r.create<WeatherService>(WeatherService::class.java)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideMovieService(retrofit: Retrofit): MovieService {
+//        return retrofit.create<MovieService>(MovieService::class.java)
+//    }
+
+    @Provides
     @Singleton
     fun provideApi(retrofit: Retrofit): Api {
         return retrofit.create<Api>(Api::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideMovieService(retrofit: Retrofit): MovieService {
-        return retrofit.create<MovieService>(MovieService::class.java)
-    }
 
 }

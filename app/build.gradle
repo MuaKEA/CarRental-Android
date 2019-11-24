@@ -12,7 +12,7 @@ android {
     flavorDimensions "default"
 
     defaultConfig {
-        applicationId "dk.nodes.template"
+        applicationId 'dk.Kea.TjernerTeamet'
         minSdkVersion sdks.minSdkVersion
         targetSdkVersion sdks.targetSdkVersion
         multiDexEnabled true

@@ -24,17 +24,7 @@ internal abstract class MainActivityBuilder {
     )
     internal abstract fun mainActivity(): MainActivity
 
-    @ContributesAndroidInjector
-    abstract fun DiscoverMoviesFragment(): DiscoverMoviesFragment
 
-    @ContributesAndroidInjector
-    abstract fun MovieListFragment(): MovieListFragment
-
-    @ContributesAndroidInjector
-    abstract fun ShowSavedMoviesFragment(): ShowSavedMoviesFragment
-
-    @ContributesAndroidInjector
-    abstract fun SearchMoviesFragment(): SearchMoviesFragment
 
 
 }

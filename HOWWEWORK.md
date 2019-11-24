@@ -214,5 +214,5 @@ https://github.com/nodes-android/nodes-architecture-android
 
 ## Inspired from the following sources:
 - [Clean Architecture by Uncle Bob](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [Some dudes android implementation](https://medium.com/@dmilicic/a-detailed-guide-on-developing-android-apps-using-the-clean-architecture-pattern-d38d71e94029)
+- [Some dudes android implementation](v)
 - [Some other dudes implementation](https://fernandocejas.com/2014/09/03/architecting-android-the-clean-way)

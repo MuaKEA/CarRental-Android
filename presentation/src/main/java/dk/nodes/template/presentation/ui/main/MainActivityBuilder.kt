@@ -24,7 +24,8 @@ internal abstract class MainActivityBuilder {
     )
     internal abstract fun mainActivity(): MainActivity
 
-
+    @ContributesAndroidInjector
+    abstract fun EditEmployeeActivity(): EditEmployeeActivity
 
 
 }

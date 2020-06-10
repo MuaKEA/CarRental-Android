@@ -1,23 +1,8 @@
 <resources>
-    <string name="app_name">presentation</string>
-    <string name="Home">Home</string>
-    <string name="Discover">Discover</string>
-    <string name="Saved">Saved</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">Main2Activity</string>
-
-    <string name="tab_text_0">Search</string>
-    <string name="tab_text_1">Action</string>
-    <string name="tab_text_2">Drama</string>
-    <string name="tab_text_3">Comedy</string>
-    <string name="tab_text_4">Recommmeded</string>
-    <string name="tab_text_5">Top Rated</string>
-    <string name="tab_text_6">Popular</string>
-    <string name="tab_text_7">Now Playing</string>
-    <string name="tab_text_8">Saved</string>
-    <string name="tab_text_9">Horror</string>
-
+    </string-array>
 
 </resources>

@@ -5,16 +5,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name=".ui.Weather.CurrentWeatherActivity"></activity>
+        <activity android:name=".ui.main.EditEmployeeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+
         <activity
             android:name=".ui.main.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.movieDetails.ShowMovieDetailsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
-            android:hardwareAccelerated="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
     </application>
 
 </manifest>

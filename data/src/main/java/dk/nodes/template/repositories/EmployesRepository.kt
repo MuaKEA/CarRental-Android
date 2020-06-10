@@ -2,6 +2,7 @@ package dk.nodes.template.repositories
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.google.gson.Gson
 import dk.nodes.template.models.Departments
 import dk.nodes.template.models.DepartmentsInfo
 import dk.nodes.template.models.EditedEmployee
@@ -11,7 +12,8 @@ import java.util.ArrayList
 import javax.inject.Inject
 
 class EmployesRepository @Inject constructor(private val iEmployesService: IEmployesService,
-                                             private val sharedPreferences: SharedPreferences) {
+                                             private val sharedPreferences: SharedPreferences,
+                                             private val gson : Gson) {
 
 
     fun getHeader(): HashMap<String, String> {
@@ -88,7 +90,13 @@ class EmployesRepository @Inject constructor(private val iEmployesService: IEmpl
 
     suspend fun sendEmployee(employee: EditedEmployee): Unit?{
 
-        val response = iEmployesService.sendEmployee(getHeader(),employee.id,employee.firstName,employee.lastName,employee.gender).execute()
+        var employeeHasmap = HashMap<String,String>()
+        employeeHasmap.put("firstName",employee.firstName)
+        employeeHasmap.put("lastName", employee.lastName)
+        employeeHasmap.put("gender", employee.gender)
+
+
+        val response = iEmployesService.sendEmployee(getHeader(),employee.id,gson.toJson(employeeHasmap)).execute()
 
         if (response.isSuccessful) {
             var message = response.body()
